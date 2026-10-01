@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Republican Unified Voters</title>
+<meta name="description" content="Volunteer guide to the Illinois 2026 general election: the statewide, congressional and Cook County races, the Republican running in each, a non-Democrat choice where there isn't one, key dates, and a ballot list you can copy and send to friends.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a sticky red sign band, then a sample-ballot sheet of "contests" (ballot header bars, fill-in ovals) beside a sticky "My ballot" card; one column on phones. */
+:root {
+  --paper: #EEF1F6;
+  --sheet: #FFFFFF;
+  --ink: #111A2F;
+  --muted: #576078;
+  --line: #D3D8E3;
+  --soft: #E6EAF3;
+  --bar: #14244A;
+  --on-bar: #FFFFFF;
+  --band: #B3132D;
+  --on-band: #FFFFFF;
+  --accent: #B3132D;
+  --focus: #2A5BD7;
+  --ok: #1D7644;
+  --display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0B1020; --sheet: #131A2D; --ink: #E6EAF4; --muted: #9AA3BA; --line: #283252; --soft: #1B2442;
+    --bar: #24386B; --on-bar: #FFFFFF; --band: #9C1027; --on-band: #FFFFFF; --accent: #FF6B7D; --focus: #7FA2FF; --ok: #5BC98A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0B1020; --sheet: #131A2D; --ink: #E6EAF4; --muted: #9AA3BA; --line: #283252; --soft: #1B2442;
+  --bar: #24386B; --on-bar: #FFFFFF; --band: #9C1027; --on-band: #FFFFFF; --accent: #FF6B7D; --focus: #7FA2FF; --ok: #5BC98A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.55 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; }
+@media (min-width: 640px) { .wrap { padding-inline: 28px; } }
+
+/* Sign band */
+.band {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: var(--band); color: var(--on-band);
+}
+.band-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.org { font: 900 20px/1 var(--display); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.org small { font-weight: 700; opacity: .85; letter-spacing: .08em; }
+.band-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 600 13px/1 var(--body); color: var(--on-band); text-decoration: none;
+  border: 1.5px solid currentColor; border-radius: 999px; padding: 7px 12px; white-space: nowrap;
+}
+.band-chip:hover { color: var(--on-band); background: rgb(255 255 255 / .14); }
+.band-chip b { font-variant-numeric: tabular-nums; background: var(--on-band); color: var(--band); border-radius: 999px; min-width: 22px; padding: 3px 7px; text-align: center; }
+.band-chip { flex-shrink: 0; }
+@media (max-width: 420px) { .org { font-size: 17px; letter-spacing: .04em; } .org small { display: none; } }
+
+/* Hero */
+.hero { display: grid; gap: 28px; padding-block: 40px 28px; align-items: end; }
+@media (min-width: 860px) { .hero { grid-template-columns: minmax(0, 1fr) 320px; padding-block: 56px 36px; } }
+.eyebrow { font: 700 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.hero h1 {
+  font: 900 clamp(52px, 10vw, 104px)/.88 var(--display); text-transform: uppercase; letter-spacing: .005em;
+  margin-top: 14px;
+}
+.hero h1 span { color: var(--accent); }
+.lede { margin-top: 18px; max-width: 58ch; font-size: 18px; color: var(--muted); }
+.lede strong { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font: 700 15px/1 var(--body); text-decoration: none; cursor: pointer;
+  padding: 13px 18px; border-radius: 8px; border: 1.5px solid var(--ink);
+  background: transparent; color: var(--ink);
+}
+.btn:hover { background: var(--soft); color: var(--ink); }
+.btn.primary { background: var(--band); border-color: var(--band); color: var(--on-band); }
+.btn.primary:hover { filter: brightness(1.08); color: var(--on-band); }
+.btn.small { padding: 9px 12px; font-size: 13px; }
+
+/* Ballot stub countdown */
+.stub {
+  background: var(--sheet); border: 1px solid var(--line); border-radius: 10px;
+  overflow: hidden;
+}
+.stub-top { background: var(--bar); color: var(--on-bar); padding: 10px 16px; font: 700 12px/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; display: flex; justify-content: space-between; gap: 8px; }
+.stub-body { padding: 18px 16px 16px; border-bottom: 2px dashed var(--line); }
+.stub-num { font: 900 88px/.85 var(--display); font-variant-numeric: tabular-nums; }
+.stub-unit { font: 800 22px/1 var(--display); text-transform: uppercase; letter-spacing: .04em; margin-top: 6px; }
+.stub-date { margin-top: 8px; color: var(--muted); font-size: 14px; }
+.stub-foot { padding: 12px 16px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.stub-foot b { color: var(--ink); font-weight: 600; }
+
+/* Dates rail */
+.dates { padding-block: 8px 8px; }
+.rail { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.rail li { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.rail .d { font: 800 26px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.rail .d small { font: 600 12px/1 var(--body); color: var(--muted); letter-spacing: .06em; margin-left: 6px; }
+.rail .what { font-size: 14px; line-height: 1.4; }
+.rail li.past { opacity: .55; }
+.rail li.next { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.when { justify-self: start; font: 700 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; background: var(--soft); color: var(--muted); }
+.next .when { background: var(--band); color: var(--on-band); }
+.note { margin-top: 12px; font-size: 14px; color: var(--muted); max-width: 75ch; }
+.note b { color: var(--ink); }
+
+/* Sections */
+.layout { display: grid; gap: 32px; padding-block: 28px 56px; }
+@media (min-width: 1000px) { .layout { grid-template-columns: minmax(0, 1fr) 330px; align-items: start; } }
+.main { display: grid; gap: 52px; min-width: 0; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 3px solid var(--ink); padding-bottom: 8px; }
+.sec-head h2 { font: 800 clamp(30px, 4.4vw, 40px)/1 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+.sec-head .count { font: 600 13px/1 var(--body); color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+.sec-intro { margin-top: 12px; color: var(--muted); max-width: 70ch; }
+.sec-intro b { color: var(--ink); font-weight: 600; }
+
+/* Contests */
+.contests { display: grid; gap: 16px; margin-top: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+.contest { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.c-bar { background: var(--bar); color: var(--on-bar); padding: 10px 14px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.c-bar h3 { font: 700 14px/1.25 var(--body); letter-spacing: .06em; text-transform: uppercase; }
+.c-bar .vf { font: 500 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; opacity: .8; white-space: nowrap; }
+.does { padding: 12px 14px 4px; font-size: 14px; color: var(--muted); }
+.choices { padding: 8px 8px 4px; display: grid; gap: 2px; }
+.choice {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 10px; align-items: start;
+  width: 100%; text-align: left; font: inherit; color: inherit; background: transparent;
+  border: 0; border-radius: 8px; padding: 10px 8px;
+}
+button.choice { cursor: pointer; }
+button.choice:hover { background: var(--soft); }
+.oval {
+  width: 30px; height: 18px; border-radius: 50%; border: 2px solid var(--ink); margin-top: 2px;
+  position: relative; background: transparent; transition: background-color .15s ease, transform .15s ease;
+}
+.choice[aria-pressed="true"] .oval { background: var(--ink); transform: scale(1.06); }
+.choice.dem { opacity: .62; }
+.choice.dem .oval { border-style: dashed; border-color: var(--muted); }
+.cand { display: grid; gap: 2px; min-width: 0; }
+.cand .name { font-weight: 700; font-size: 17px; line-height: 1.3; }
+.cand .bio { font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+.party { font: 700 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: 5px; white-space: nowrap; }
+.choice.pick .party { color: var(--ink); }
+.choice.rep .party { color: var(--accent); }
+.mark-hint { font: 600 12px/1 var(--body); color: var(--accent); margin-top: 4px; }
+.choice[aria-pressed="true"] .mark-hint { color: var(--ok); }
+.c-foot { margin-top: auto; padding: 6px 14px 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font: 700 11px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; background: var(--soft); color: var(--muted); }
+.chip.hold { background: var(--band); color: var(--on-band); }
+.chip.open { color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); background: transparent; }
+.stamp { flex-basis: 100%; margin-top: 4px; font: 600 11px/1.3 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+/* District picker */
+.picker { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.field { display: grid; gap: 6px; }
+.field label { font: 700 12px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+select {
+  font: 600 16px/1.2 var(--body); color: var(--ink); background: var(--sheet);
+  border: 1.5px solid var(--ink); border-radius: 8px; padding: 11px 36px 11px 12px; min-width: 0; max-width: 100%;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 18px) 52%, calc(100% - 12px) 52%;
+  background-size: 6px 6px; background-repeat: no-repeat;
+}
+.lookup { font-size: 14px; color: var(--muted); }
+.empty { margin-top: 16px; padding: 18px; border: 1.5px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 15px; }
+details.all { margin-top: 16px; background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; }
+details.all summary { cursor: pointer; padding: 14px 16px; font-weight: 700; }
+.table-scroll { overflow-x: auto; border-top: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 14px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 11px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+td.n { font: 800 20px/1 var(--display); font-variant-numeric: tabular-nums; }
+td .r { font-weight: 700; }
+tr.mine td { background: var(--soft); }
+
+/* Cook County list */
+.nofile { margin-top: 16px; background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; }
+.nofile h3 { font: 700 13px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 14px 16px 0; }
+.nofile ul { list-style: none; margin: 0; padding: 8px 16px 14px; display: grid; gap: 0; }
+.nofile li { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.nofile li:last-child { border-bottom: 0; }
+.nofile li span:last-child { color: var(--muted); font-size: 14px; }
+.sub { margin-top: 36px; font: 800 26px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.callout { margin-top: 16px; padding: 14px 16px; border-left: 4px solid var(--accent); background: var(--sheet); border-radius: 0 10px 10px 0; font-size: 15px; max-width: 75ch; }
+
+/* Plan */
+.plan { margin-top: 18px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.panel { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.panel h3 { font: 800 22px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.opt { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: start; padding: 8px; border-radius: 8px; cursor: pointer; }
+.opt:hover { background: var(--soft); }
+.opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.opt .oval { margin-top: 3px; }
+.opt input:checked + .oval { background: var(--ink); }
+.opt input:focus-visible + .oval { outline: 3px solid var(--focus); outline-offset: 2px; }
+.opt b { display: block; font-weight: 700; }
+.opt small { display: block; font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+.box { width: 22px; height: 22px; border: 2px solid var(--ink); border-radius: 5px; margin: 1px 0 0 4px; display: grid; place-items: center; }
+.opt input:checked + .box { background: var(--ink); }
+.opt input:checked + .box::after { content: ""; width: 6px; height: 11px; border: solid var(--sheet); border-width: 0 2.5px 2.5px 0; transform: translateY(-1px) rotate(45deg); }
+.opt input:focus-visible + .box { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* My ballot card */
+.aside { min-width: 0; }
+@media (min-width: 1000px) { .aside { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 64px); } }
+.card { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.card-top { background: var(--bar); color: var(--on-bar); padding: 14px 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.card-top h2 { font: 800 26px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.card-top span { font: 600 13px/1 var(--body); opacity: .85; font-variant-numeric: tabular-nums; }
+.tally { list-style: none; margin: 0; padding: 6px 16px; }
+.tally li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.tally li:last-child { border-bottom: 0; }
+.tally .oval { width: 20px; height: 12px; border-width: 1.5px; margin-top: 5px; }
+.tally li.on .oval { background: var(--ink); }
+.tally .o { font: 700 11px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tally .p { font-size: 14.5px; font-weight: 600; line-height: 1.35; }
+.tally li:not(.on) .p { font-weight: 400; color: var(--muted); }
+.card-actions { padding: 12px 16px 16px; display: grid; gap: 8px; border-top: 1px solid var(--line); }
+.card-actions .row { display: flex; gap: 8px; flex-wrap: wrap; }
+.card-actions .row .btn { flex: 1 1 auto; }
+.status { min-height: 1.4em; font-size: 13.5px; color: var(--ok); font-weight: 600; }
+.status.warn { color: var(--accent); }
+.fine { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+details.preview summary { cursor: pointer; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+textarea {
+  width: 100%; margin-top: 8px; min-height: 180px; resize: vertical;
+  font: 400 13px/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 10px;
+}
+
+/* Footer */
+footer { border-top: 3px solid var(--ink); padding-block: 22px 40px; font-size: 13.5px; color: var(--muted); }
+footer .wrap { display: grid; gap: 10px; }
+footer b { color: var(--ink); }
+.sources { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<header class="band">
+  <div class="wrap band-in">
+    <div class="org">Republican Unified Voters <small>· Illinois</small></div>
+    <a class="band-chip" href="#my-ballot">My ballot <b id="chip-count">0</b></a>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <p class="eyebrow">2026 General Election · Illinois · Volunteer guide</p>
+      <h1 id="hero-title">One ballot.<br><span>One team.</span></h1>
+      <p class="lede">The statewide, congressional and Cook County races on the Illinois ballot, the Republican running in each, and a non-Democrat choice where there isn't one. <strong>Mark your picks, choose your district, then send your ballot to three friends.</strong></p>
+      <div class="cta">
+        <a class="btn primary" href="#statewide">Mark my ballot</a>
+        <a class="btn" href="#dates">Key dates</a>
+      </div>
+    </div>
+    <aside class="stub" aria-label="Countdown to Election Day">
+      <div class="stub-top"><span>General Election</span><span>Illinois</span></div>
+      <div class="stub-body">
+        <div class="stub-num" id="days-num">33</div>
+        <div class="stub-unit" id="days-unit">days to go</div>
+        <div class="stub-date">Tuesday, November 3, 2026</div>
+      </div>
+      <div class="stub-foot"><span>Polls open <b>6 a.m. – 7 p.m.</b></span><span>No straight-party option</span></div>
+    </aside>
+  </section>
+
+  <section class="dates" id="dates" aria-labelledby="dates-title">
+    <div class="sec-head"><h2 id="dates-title">Key dates</h2><span class="count">City of Chicago</span></div>
+    <ol class="rail" id="rail"></ol>
+    <p class="note"><b>Missed the deadline?</b> From Oct 7, Illinois lets you register and vote the same day at an early voting site, or at your polling place on Election Day. Bring two IDs, one showing your current address. <b>Not in Chicago?</b> Suburban Cook voters should check dates with the <a href="https://www.cookcountyclerkil.gov" target="_blank" rel="noopener">Cook County Clerk</a>; everyone else, with your county clerk.</p>
+  </section>
+
+  <div class="layout">
+    <div class="main">
+
+      <section id="statewide" aria-labelledby="sw-title">
+        <div class="sec-head"><h2 id="sw-title">Statewide</h2><span class="count">6 races · every Illinois voter</span></div>
+        <p class="sec-intro">Tap the oval next to each Republican to mark your pick. <b>On the real ballot you fill in each race yourself.</b> Illinois has no one-mark straight-party option. Other names, such as independents, may also appear in some races.</p>
+        <div class="contests" id="sw-list"></div>
+      </section>
+
+      <section id="house" aria-labelledby="house-title">
+        <div class="sec-head"><h2 id="house-title">U.S. House</h2><span class="count">17 districts · pick yours</span></div>
+        <p class="sec-intro">Your congressional district decides which House race is on your ballot. Districts were redrawn in 2021, so it may not be the one you remember.</p>
+        <div class="picker">
+          <div class="field">
+            <label for="district">My district</label>
+            <select id="district"></select>
+          </div>
+          <p class="lookup">Not sure? Your sample ballot lists it: <a href="https://chicagoelections.gov" target="_blank" rel="noopener">Chicago</a> · <a href="https://www.cookcountyclerkil.gov" target="_blank" rel="noopener">Suburban Cook</a> · <a href="https://www.elections.il.gov" target="_blank" rel="noopener">Rest of Illinois</a></p>
+        </div>
+        <div id="house-card"></div>
+        <details class="all" id="all-districts">
+          <summary>All 17 districts</summary>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Dist.</th><th>Area</th><th>Republican</th><th>Democrat</th><th>Seat</th></tr></thead>
+              <tbody id="house-rows"></tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <section id="cook" aria-labelledby="cook-title">
+        <div class="sec-head"><h2 id="cook-title">Cook County</h2><span class="count">Chicago &amp; suburban Cook</span></div>
+        <p class="sec-intro">Republicans are running for three seats on the Water Reclamation District board. <b>In three other countywide races no Republican is on the ballot.</b> There you can mark a non-Democrat instead, or skip the race.</p>
+        <div class="contests" id="cook-rep"></div>
+        <h3 class="sub">No Republican running</h3>
+        <p class="sec-intro">In these races the Libertarian is the only name besides the Democrat. Tap one to add it to your ballot, or leave the race blank.</p>
+        <div class="contests" id="cook-alt"></div>
+        <div class="nofile">
+          <h3>Only a Democrat is running</h3>
+          <ul>
+            <li><span>Clerk</span><span>Monica Gordon (D, incumbent)</span></li>
+            <li><span>Treasurer</span><span>Maria Pappas (D, incumbent)</span></li>
+            <li><span>Board of Review</span><span>2nd District: Elizabeth "Liz" Nicholson (D). Other districts: check your sample ballot.</span></li>
+            <li><span>Water Reclamation District, 2-year term</span><span>Cameron "Cam" Davis (D)</span></li>
+          </ul>
+        </div>
+        <p class="note">No Republican is on the ballot for Board President. Eric Wallace ran as a write-in in the March primary, but he does not appear on the Cook County Clerk's write-in list for November. Check your sample ballot.</p>
+        <p class="callout"><b>County Board: all 17 commissioner seats are up.</b> Republicans are running in several districts. Your sample ballot shows your district and who is running in it.</p>
+        <p class="callout"><b>You can skip a race.</b> Leaving one blank does not affect the rest of your ballot. Every vote you cast for governor, Senate and Congress still counts in full.</p>
+      </section>
+
+      <section id="springfield" aria-labelledby="sf-title">
+        <div class="sec-head"><h2 id="sf-title">Springfield</h2><span class="count">State House &amp; Senate</span></div>
+        <p class="sec-intro">Every state representative is on this ballot, and in many districts your state senator is too. <b>Democrats hold supermajorities in both chambers, and these are the races that change that.</b> Your sample ballot lists your districts and who is running.</p>
+      </section>
+
+      <section id="judges" aria-labelledby="judges-title">
+        <div class="sec-head"><h2 id="judges-title">Judges</h2><span class="count">Retention · Yes or No</span></div>
+        <p class="sec-intro">Near the end of your ballot is a long list of sitting judges asking to keep their seats. <b>Each one needs 60% Yes to stay.</b> These are easy to skip in the booth, so look the names up on your sample ballot before you go and decide ahead of time.</p>
+      </section>
+
+      <section id="plan" aria-labelledby="plan-title">
+        <div class="sec-head"><h2 id="plan-title">My plan</h2><span class="count">Saved on this device</span></div>
+        <div class="plan">
+          <fieldset class="panel" style="border:1px solid var(--line); margin:0;">
+            <legend class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">How I'll vote</legend>
+            <h3>How I'll vote</h3>
+            <label class="opt"><input type="radio" name="method" id="m-early" value="early"><span class="oval"></span><span><b>Early, in person</b><small>Open now downtown at 137 S. State St. All 50 Chicago wards from Oct 19.</small></span></label>
+            <label class="opt"><input type="radio" name="method" id="m-mail" value="mail"><span class="oval"></span><span><b>By mail</b><small>Request by Oct 29, 5 p.m. Postmark it by Nov 3.</small></span></label>
+            <label class="opt"><input type="radio" name="method" id="m-eday" value="eday"><span class="oval"></span><span><b>On Election Day</b><small>Tuesday, Nov 3, 6 a.m. to 7 p.m.</small></span></label>
+          </fieldset>
+          <div class="panel">
+            <h3>Before I vote</h3>
+            <label class="opt"><input type="checkbox" id="k-reg" data-check="reg"><span class="box"></span><span><b>Check my registration</b><small>Moved or changed your name? Update it. <a href="https://www.elections.il.gov" target="_blank" rel="noopener">elections.il.gov</a></small></span></label>
+            <label class="opt"><input type="checkbox" id="k-sample" data-check="sample"><span class="box"></span><span><b>Look up my sample ballot</b><small>It shows every race and judge you'll see.</small></span></label>
+            <label class="opt"><input type="checkbox" id="k-where" data-check="where"><span class="box"></span><span><b>Know where I'll vote</b><small>Polling place or early voting site.</small></span></label>
+            <label class="opt"><input type="checkbox" id="k-friends" data-check="friends"><span class="box"></span><span><b>Bring three friends</b><small>Send them your ballot and make a plan together.</small></span></label>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="aside" id="my-ballot" aria-labelledby="mb-title">
+      <div class="card">
+        <div class="card-top"><h2 id="mb-title">My ballot</h2><span id="mb-count">0 marked</span></div>
+        <ul class="tally" id="tally"></ul>
+        <div class="card-actions">
+          <button class="btn primary" id="copy" type="button">Copy my ballot</button>
+          <div class="status" id="status" role="status" aria-live="polite"></div>
+          <div class="row">
+            <button class="btn small" id="mark-all" type="button">Mark every Republican</button>
+            <button class="btn small" id="clear" type="button">Clear</button>
+          </div>
+          <details class="preview" id="preview">
+            <summary>See the text</summary>
+            <textarea id="ballot-text" readonly aria-label="Your ballot as text"></textarea>
+          </details>
+          <p class="fine">Paste it into a text or group chat. Your picks stay on this device; nobody else can see them.</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Republican Unified Voters</b> is a volunteer voter guide. It is not affiliated with the Illinois Republican Party, the Republican National Committee, or any candidate or campaign.</p>
+    <p>Candidates are as listed for the November 3 ballot, checked October 1, 2026. Where no Republican is running, other non-Democrat candidates are shown with their own party label. Ballots can change. Your official sample ballot is the final word.</p>
+    <div class="sources">
+      <a href="https://www.elections.il.gov" target="_blank" rel="noopener">Illinois State Board of Elections</a>
+      <a href="https://chicagoelections.gov" target="_blank" rel="noopener">Chicago Board of Elections</a>
+      <a href="https://www.cookcountyclerkil.gov" target="_blank" rel="noopener">Cook County Clerk</a>
+      <a href="https://vote.gov" target="_blank" rel="noopener">vote.gov</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var STATEWIDE = [
+    { id: "gov", short: "Governor", office: "Governor & Lieutenant Governor",
+      does: "Runs state government, proposes the budget, and signs or vetoes every bill.",
+      r: { name: "Darren Bailey & Aaron Del Mar", bio: "Bailey is a farmer from Xenia, a former state senator, and the 2022 Republican nominee for governor." },
+      d: { name: "JB Pritzker & Christian Mitchell", bio: "Pritzker is the incumbent governor." },
+      also: "Also on the ballot: Collin Corbett (Independent)",
+      seat: "dem" },
+    { id: "sen", short: "U.S. Senate", office: "U.S. Senator",
+      does: "One of Illinois's two votes in the U.S. Senate, for a six-year term.",
+      r: { name: "Don Tracy", bio: "Springfield attorney and former chairman of the Illinois Republican Party." },
+      d: { name: "Juliana Stratton", bio: "Current lieutenant governor." },
+      also: "Also on the ballot: Whitfield Harrington Jr. (American Center Party)",
+      seat: "open" },
+    { id: "ag", short: "Attorney General", office: "Attorney General",
+      does: "The state's top lawyer. Enforces state law and represents Illinois in court.",
+      r: { name: "Bob Fioretti", bio: "Attorney and former Chicago alderman (2nd Ward, 2007–2015)." },
+      d: { name: "Kwame Raoul", bio: "Incumbent." },
+      seat: "dem" },
+    { id: "sos", short: "Secretary of State", office: "Secretary of State",
+      does: "Runs driver's licenses, vehicle registration, business filings and the state library.",
+      r: { name: "Diane Harris", bio: "Joliet Junior College trustee." },
+      d: { name: "Alexi Giannoulias", bio: "Incumbent." },
+      seat: "dem" },
+    { id: "comp", short: "Comptroller", office: "Comptroller",
+      does: "The state's bookkeeper. Pays Illinois's bills and reports on its finances.",
+      r: { name: "Bryan Drew", bio: "Attorney from southern Illinois." },
+      d: { name: "Margaret Croke", bio: "State representative from Chicago." },
+      seat: "open" },
+    { id: "treas", short: "Treasurer", office: "Treasurer",
+      does: "Invests state money and runs college savings and unclaimed property programs.",
+      r: { name: "Max Solomon", bio: "Won the Republican nomination as a write-in in the March primary." },
+      d: { name: "Mike Frerichs", bio: "Incumbent." },
+      seat: "dem" }
+  ];
+
+  // seat: "rep" = Republican-held, "open" = open seat, "dem" = Democrat-held
+  var HOUSE = [
+    { n: 1, area: "South Side (Bronzeville, Hyde Park, Morgan Park) out to New Lenox and Homer Glen", r: "Christian Maxwell", d: "Jonathan Jackson", seat: "dem" },
+    { n: 2, area: "Far Southeast Side, south suburbs, Will and Kankakee counties", r: "Michael Noack", d: "Donna Miller", seat: "open" },
+    { n: 3, area: "Northwest Side (Logan Square, Portage Park, Irving Park) and DuPage suburbs", r: "Angel Oakley", d: "Delia Ramirez", seat: "dem" },
+    { n: 4, area: "Southwest Side (Brighton Park, Gage Park, West Lawn), Cicero, Berwyn", r: "Lupe Castillo", d: "Patty Garcia", seat: "open", also: "Also on the ballot: Ed Hershey (Working Class Party), Chris Getty (Independent)" },
+    { n: 5, area: "North Side (Lake View, Lincoln Park, Norwood Park), Arlington Heights, Palatine", r: "Tommy Hanson", d: "Mike Quigley", seat: "dem" },
+    { n: 6, area: "Southwest suburbs: Oak Lawn, Downers Grove, eastern DuPage", r: "Niki Conforti", d: "Sean Casten", seat: "dem" },
+    { n: 7, area: "The Loop, West Side, Near North Side, Oak Park, Maywood", r: "Chad Koppie", d: "La Shawn Ford", seat: "open" },
+    { n: 8, area: "Elgin, Schaumburg, Des Plaines", r: "Jennifer Davis", d: "Melissa Bean", seat: "open" },
+    { n: 9, area: "Far North Side, Evanston, Skokie, North Shore", r: "John Elleson", d: "Daniel Biss", seat: "open" },
+    { n: 10, area: "Northbrook, Mundelein, Waukegan", r: "Carl Lambrecht", d: "Brad Schneider", seat: "dem" },
+    { n: 11, area: "Aurora, Naperville, Belvidere", r: "Jeff Walter", d: "Bill Foster", seat: "dem" },
+    { n: 12, area: "Southern Illinois: Carbondale, Marion, O'Fallon", r: "Mike Bost", d: "Julie Fortier", seat: "rep" },
+    { n: 13, area: "Springfield, Champaign–Urbana, Decatur", r: "Jeff Wilson", d: "Nikki Budzinski", seat: "dem" },
+    { n: 14, area: "Joliet, Plainfield, Oswego, DeKalb", r: "Jim Marter", d: "Lauren Underwood", seat: "dem" },
+    { n: 15, area: "Rural central Illinois, Quincy", r: "Mary Miller", d: "Jennifer Todd", seat: "rep" },
+    { n: 16, area: "Rural northern Illinois", r: "Darin LaHood", d: "Paul Nolley", seat: "rep" },
+    { n: 17, area: "Rockford, Peoria, Quad Cities, Bloomington", r: "Dillan Vancil", d: "Eric Sorensen", seat: "dem" }
+  ];
+
+  // Cook County. "mine" rows can be marked; "them" rows are shown greyed for reference.
+  var COOK_REP = [
+    { id: "mwrd", short: "Water Reclamation District (vote for 3)", office: "Water Reclamation District, 6-year term", vf: "Vote for three",
+      does: "Runs the region's wastewater treatment and flood control. Three seats are up.",
+      mine: [
+        { key: "mwrd1", name: "Michelle Pennington", bio: "Managing director of a real estate holding company.", party: "Republican" },
+        { key: "mwrd2", name: "Timothy E. Rueckert", bio: "Former Northfield Township highway commissioner.", party: "Republican" },
+        { key: "mwrd3", name: "Jill B. Shestokas", bio: "Former public affairs director at the Water Reclamation District.", party: "Republican" }
+      ],
+      them: [
+        { name: "Precious Brady-Davis", bio: "Incumbent.", party: "Democratic" },
+        { name: "Eira Lizeth Corral Sepúlveda", bio: "Incumbent.", party: "Democratic" },
+        { name: "Beth McElroy Kirkwood", bio: "Incumbent.", party: "Democratic" }
+      ],
+      seat: "dem" }
+  ];
+  var NO_REP = "No Republican running";
+  var COOK_ALT = [
+    { id: "cookpres", short: "Cook County Board President", office: "President, Cook County Board",
+      does: "Leads Cook County government, which funds the county's courts, jail and public hospitals.",
+      mine: [{ key: "cookpres", name: "Michael Murphy", bio: "IT professional from Chicago.", party: "Libertarian" }],
+      them: [{ name: "Toni Preckwinkle", bio: "Incumbent, seeking a fifth term.", party: "Democratic" }],
+      seat: "dem", tag: NO_REP },
+    { id: "sheriff", short: "Cook County Sheriff", office: "Cook County Sheriff",
+      does: "Runs the county jail and courthouse security, and polices unincorporated areas.",
+      mine: [{ key: "sheriff", name: "Brad Sandefur", bio: "Also the Libertarian nominee for sheriff in 2022.", party: "Libertarian" }],
+      them: [{ name: "Thomas J. Dart", bio: "Incumbent.", party: "Democratic" }],
+      seat: "dem", tag: NO_REP },
+    { id: "assessor", short: "Cook County Assessor", office: "Cook County Assessor",
+      does: "Sets the value of every property in the county, the starting point for your property tax bill.",
+      mine: [{ key: "assessor", name: "Nico Tsatsoulis", bio: "Also the Libertarian nominee for assessor in 2022.", party: "Libertarian" }],
+      them: [{ name: "Pat Hynes", bio: "Lyons Township assessor. Beat incumbent Fritz Kaegi in the primary.", party: "Democratic" }],
+      seat: "open", tag: NO_REP }
+  ];
+  var ABBR = { Republican: "R", Libertarian: "L", Democratic: "D" };
+
+  var DATES = [
+    { y: 2026, m: 9, d: 1, what: "Early voting opens at the Downtown Supersite (137 S. State St.) and the Election Board office." },
+    { y: 2026, m: 9, d: 6, what: "Last day to register by mail. Must be postmarked." },
+    { y: 2026, m: 9, d: 7, what: "Same-day registration and voting begins at early voting sites." },
+    { y: 2026, m: 9, d: 18, what: "Online voter registration closes." },
+    { y: 2026, m: 9, d: 19, what: "Early voting opens in all 50 Chicago wards." },
+    { y: 2026, m: 9, d: 29, what: "Last day to request a mail ballot, by 5 p.m." },
+    { y: 2026, m: 10, d: 3, what: "Election Day. Polls open 6 a.m. to 7 p.m. Mail ballots must be postmarked today." }
+  ];
+
+  var METHOD_TEXT = { early: "Early, in person", mail: "By mail", eday: "On Election Day, Nov 3" };
+  var SEAT_CHIP = {
+    rep: ["hold", "Republican-held · keep it"],
+    open: ["open", "Open seat"],
+    dem: ["", "Democrat-held"]
+  };
+
+  var KEY = "ruv-ballot-2026";
+  var state = { picks: {}, district: "", method: "", checks: {} };
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (saved && typeof saved === "object") {
+      state.picks = saved.picks || {};
+      state.district = saved.district || "";
+      state.method = saved.method || "";
+      state.checks = saved.checks || {};
+    }
+  } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function startOfDay(dt) { return new Date(dt.getFullYear(), dt.getMonth(), dt.getDate()); }
+  var today = startOfDay(new Date());
+  function daysUntil(y, m, d) { return Math.round((new Date(y, m, d) - today) / 86400000); }
+
+  // Countdown
+  (function () {
+    var left = daysUntil(2026, 10, 3);
+    var num = document.getElementById("days-num"), unit = document.getElementById("days-unit");
+    if (left > 1) { num.textContent = left; unit.textContent = "days to go"; }
+    else if (left === 1) { num.textContent = "1"; unit.textContent = "day to go"; }
+    else if (left === 0) { num.textContent = "Today"; unit.textContent = "Go vote"; }
+    else { num.textContent = "Done"; unit.textContent = "Polls have closed"; }
+  })();
+
+  // Dates rail
+  (function () {
+    var rail = document.getElementById("rail");
+    var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var nextMarked = false;
+    DATES.forEach(function (x) {
+      var left = daysUntil(x.y, x.m, x.d);
+      var li = el("li");
+      var dd = el("div", "d", MON[x.m] + " " + x.d);
+      dd.appendChild(el("small", null, DOW[new Date(x.y, x.m, x.d).getDay()]));
+      var when;
+      if (left < 0) { li.className = "past"; when = "Passed"; }
+      else {
+        if (!nextMarked) { li.className = "next"; nextMarked = true; }
+        when = left === 0 ? "Today" : left === 1 ? "Tomorrow" : "In " + left + " days";
+      }
+      li.appendChild(el("span", "when", when));
+      li.appendChild(dd);
+      li.appendChild(el("p", "what", x.what));
+      rail.appendChild(li);
+    });
+  })();
+
+  function contest(race) {
+    var art = el("article", "contest");
+    var bar = el("div", "c-bar");
+    bar.appendChild(el("h3", null, race.office));
+    bar.appendChild(el("span", "vf", race.vf || "Vote for one"));
+    art.appendChild(bar);
+    if (race.does) art.appendChild(el("p", "does", race.does));
+    var ch = el("div", "choices");
+
+    race.mine.forEach(function (c) {
+      var on = !!state.picks[c.key];
+      var b = el("button", "choice pick" + (c.party === "Republican" ? " rep" : ""));
+      b.type = "button";
+      b.setAttribute("data-pick", c.key);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      b.appendChild(el("span", "oval"));
+      var cc = el("span", "cand");
+      cc.appendChild(el("span", "name", c.name));
+      if (c.bio) cc.appendChild(el("span", "bio", c.bio));
+      cc.appendChild(el("span", "mark-hint", on ? "Marked on my ballot" : "Tap to mark"));
+      b.appendChild(cc);
+      b.appendChild(el("span", "party", c.party));
+      b.addEventListener("click", function () { togglePick(c.key); });
+      ch.appendChild(b);
+    });
+
+    race.them.forEach(function (c) {
+      var d = el("div", "choice dem");
+      d.appendChild(el("span", "oval"));
+      var cc = el("span", "cand");
+      cc.appendChild(el("span", "name", c.name));
+      if (c.bio) cc.appendChild(el("span", "bio", c.bio));
+      d.appendChild(cc);
+      d.appendChild(el("span", "party", c.party));
+      ch.appendChild(d);
+    });
+    art.appendChild(ch);
+
+    var foot = el("div", "c-foot");
+    if (race.tag) foot.appendChild(el("span", "chip open", race.tag));
+    var chip = SEAT_CHIP[race.seat];
+    if (chip) foot.appendChild(el("span", "chip " + chip[0], chip[1]));
+    if (race.also) foot.appendChild(el("span", "chip", race.also));
+    foot.appendChild(el("span", "stamp", "Volunteer guide · Not an official ballot"));
+    art.appendChild(foot);
+    return art;
+  }
+
+  function swRace(r) {
+    return {
+      office: r.office, does: r.does, seat: r.seat, also: r.also,
+      mine: [{ key: r.id, name: r.r.name, bio: r.r.bio, party: "Republican" }],
+      them: [{ name: r.d.name, bio: r.d.bio, party: "Democratic" }]
+    };
+  }
+
+  function syncPickButtons() {
+    document.querySelectorAll("[data-pick]").forEach(function (b) {
+      var on = !!state.picks[b.getAttribute("data-pick")];
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      var hint = b.querySelector(".mark-hint");
+      if (hint) hint.textContent = on ? "Marked on my ballot" : "Tap to mark";
+    });
+  }
+
+  function togglePick(key) {
+    state.picks[key] = !state.picks[key];
+    save(); syncPickButtons(); renderTally();
+  }
+
+  // Statewide
+  var sw = document.getElementById("sw-list");
+  STATEWIDE.forEach(function (r) { sw.appendChild(contest(swRace(r))); });
+
+  // Cook County
+  var cookRep = document.getElementById("cook-rep"), cookAlt = document.getElementById("cook-alt");
+  COOK_REP.forEach(function (r) { cookRep.appendChild(contest(r)); });
+  COOK_ALT.forEach(function (r) { cookAlt.appendChild(contest(r)); });
+
+  // House picker
+  var sel = document.getElementById("district");
+  var opt0 = el("option", null, "Choose a district");
+  opt0.value = "";
+  sel.appendChild(opt0);
+  HOUSE.forEach(function (h) {
+    var o = el("option", null, "District " + h.n + " · " + h.area.split(",")[0].split(" (")[0]);
+    o.value = String(h.n);
+    sel.appendChild(o);
+  });
+  sel.value = state.district;
+
+  var rows = document.getElementById("house-rows");
+  HOUSE.forEach(function (h) {
+    var tr = el("tr");
+    tr.setAttribute("data-n", h.n);
+    tr.appendChild(el("td", "n", String(h.n)));
+    tr.appendChild(el("td", null, h.area));
+    var tdR = el("td"); tdR.appendChild(el("span", "r", h.r + (h.seat === "rep" ? " (incumbent)" : ""))); tr.appendChild(tdR);
+    tr.appendChild(el("td", null, h.d + (h.seat === "dem" ? " (incumbent)" : "")));
+    tr.appendChild(el("td", null, SEAT_CHIP[h.seat][1].split(" · ")[0]));
+    rows.appendChild(tr);
+  });
+
+  function houseRace(h) {
+    return {
+      office: "U.S. Representative, District " + h.n,
+      does: h.area + ". Two-year term in the U.S. House.",
+      mine: [{ key: "house", name: h.r, bio: h.seat === "rep" ? "Incumbent." : "", party: "Republican" }],
+      them: [{ name: h.d, bio: h.seat === "dem" ? "Incumbent." : "", party: "Democratic" }],
+      seat: h.seat, also: h.also
+    };
+  }
+
+  function renderHouse() {
+    var box = document.getElementById("house-card");
+    box.textContent = "";
+    var h = HOUSE.filter(function (x) { return String(x.n) === state.district; })[0];
+    if (!h) {
+      box.appendChild(el("p", "empty", "Choose your district above to see your House race and add it to your ballot."));
+    } else {
+      var wrap = el("div", "contests");
+      wrap.appendChild(contest(houseRace(h)));
+      box.appendChild(wrap);
+    }
+    rows.querySelectorAll("tr").forEach(function (tr) {
+      tr.classList.toggle("mine", tr.getAttribute("data-n") === state.district);
+    });
+  }
+  sel.addEventListener("change", function () {
+    state.district = sel.value;
+    save(); renderHouse(); renderTally();
+  });
+
+  // Plan
+  document.querySelectorAll('input[name="method"]').forEach(function (r) {
+    r.checked = r.value === state.method;
+    r.addEventListener("change", function () { if (r.checked) { state.method = r.value; save(); renderTally(); } });
+  });
+  document.querySelectorAll("[data-check]").forEach(function (c) {
+    var k = c.getAttribute("data-check");
+    c.checked = !!state.checks[k];
+    c.addEventListener("change", function () { state.checks[k] = c.checked; save(); });
+  });
+
+  // Ballot card
+  function currentHouse() { return HOUSE.filter(function (x) { return String(x.n) === state.district; })[0]; }
+
+  function ballotLines() {
+    var out = [];
+    STATEWIDE.forEach(function (r) {
+      var on = !!state.picks[r.id];
+      out.push({ o: r.short, p: on ? r.r.name : "", t: r.r.name + " (R)", on: on });
+    });
+    var h = currentHouse();
+    if (h) out.push({ o: "U.S. House · District " + h.n, p: state.picks.house ? h.r : "", t: h.r + " (R)", on: !!state.picks.house });
+    else out.push({ o: "U.S. House", p: "", on: false, hint: "Choose your district" });
+    // Cook County races only show once something in them is marked.
+    COOK_REP.concat(COOK_ALT).forEach(function (r) {
+      var marked = r.mine.filter(function (c) { return state.picks[c.key]; });
+      if (!marked.length) return;
+      out.push({
+        o: r.short,
+        p: marked.map(function (c) { return c.name + (c.party === "Republican" ? "" : " (" + c.party + ")"); }).join(", "),
+        t: marked.map(function (c) { return c.name + " (" + ABBR[c.party] + ")"; }).join(", "),
+        on: true
+      });
+    });
+    return out;
+  }
+
+  function ballotText() {
+    var lines = ["MY BALLOT", "Illinois General Election, Tuesday, Nov 3, 2026", ""];
+    var marked = ballotLines().filter(function (l) { return l.on; });
+    if (!marked.length) lines.push("(No races marked yet)");
+    marked.forEach(function (l) { lines.push(l.o + ": " + l.t); });
+    lines.push("");
+    if (state.method) lines.push("How I'm voting: " + METHOD_TEXT[state.method]);
+    lines.push("Polls are open 6 a.m. to 7 p.m. Illinois has no straight-party option, so fill in every race.");
+    lines.push("Check your own sample ballot before you vote.");
+    lines.push("");
+    lines.push("Republican Unified Voters (volunteer guide, not an official ballot)");
+    return lines.join("\n");
+  }
+
+  function renderTally() {
+    var ul = document.getElementById("tally");
+    ul.textContent = "";
+    var lines = ballotLines();
+    var n = 0;
+    lines.forEach(function (l) {
+      if (l.on) n++;
+      var li = el("li", l.on ? "on" : "");
+      li.appendChild(el("span", "oval"));
+      var t = el("div");
+      t.appendChild(el("div", "o", l.o));
+      t.appendChild(el("div", "p", l.on ? l.p : (l.hint || "Not marked yet")));
+      li.appendChild(t);
+      ul.appendChild(li);
+    });
+    var txt = n + " marked";
+    document.getElementById("mb-count").textContent = txt;
+    document.getElementById("chip-count").textContent = String(n);
+    document.getElementById("ballot-text").value = ballotText();
+  }
+
+  var status = document.getElementById("status");
+  function say(msg, warn) { status.textContent = msg; status.classList.toggle("warn", !!warn); }
+
+  document.getElementById("copy").addEventListener("click", function () {
+    var text = ballotText();
+    var ta = document.getElementById("ballot-text");
+    ta.value = text;
+    function fallback() {
+      document.getElementById("preview").open = true;
+      ta.focus(); ta.select();
+      say("Copy didn't go through. The text is selected below; copy it by hand.", true);
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        say("Copied. Paste it into a text to your friends.");
+      }, fallback);
+    } catch (e) { fallback(); }
+  });
+
+  document.getElementById("mark-all").addEventListener("click", function () {
+    STATEWIDE.forEach(function (r) { state.picks[r.id] = true; });
+    if (state.district) state.picks.house = true;
+    save(); syncPickButtons(); renderTally();
+    say(state.district ? "Statewide and House Republicans marked. Mark Cook County races by hand." : "Statewide races marked. Choose your district to add your House race.");
+  });
+
+  var clearBtn = document.getElementById("clear"), clearArmed = null;
+  clearBtn.addEventListener("click", function () {
+    if (!clearArmed) {
+      clearBtn.textContent = "Tap again to clear";
+      clearArmed = setTimeout(function () { clearArmed = null; clearBtn.textContent = "Clear"; }, 3000);
+      return;
+    }
+    clearTimeout(clearArmed); clearArmed = null;
+    clearBtn.textContent = "Clear";
+    state.picks = {};
+    save(); syncPickButtons(); renderTally();
+    say("Ballot cleared.");
+  });
+
+  renderHouse();
+  renderTally();
+})();
+</script>
+</body>
+</html>
