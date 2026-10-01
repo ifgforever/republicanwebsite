@@ -195,13 +195,6 @@ td.n { font: 800 20px/1 var(--display); font-variant-numeric: tabular-nums; }
 td .r { font-weight: 700; }
 tr.mine td { background: var(--soft); }
 
-/* Cook County list */
-.nofile { margin-top: 16px; background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; }
-.nofile h3 { font: 700 13px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 14px 16px 0; }
-.nofile ul { list-style: none; margin: 0; padding: 8px 16px 14px; display: grid; gap: 0; }
-.nofile li { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
-.nofile li:last-child { border-bottom: 0; }
-.nofile li span:last-child { color: var(--muted); font-size: 14px; }
 .sub { margin-top: 36px; font: 800 26px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
 .callout { margin-top: 16px; padding: 14px 16px; border-left: 4px solid var(--accent); background: var(--sheet); border-radius: 0 10px 10px 0; font-size: 15px; max-width: 75ch; }
 
@@ -336,15 +329,10 @@ footer b { color: var(--ink); }
         <h3 class="sub">No Republican running</h3>
         <p class="sec-intro">In these races the Libertarian is the only name besides the Democrat. Tap one to add it to your ballot, or leave the race blank.</p>
         <div class="contests" id="cook-alt"></div>
-        <div class="nofile">
-          <h3>Only a Democrat is running</h3>
-          <ul>
-            <li><span>Clerk</span><span>Monica Gordon (D, incumbent)</span></li>
-            <li><span>Treasurer</span><span>Maria Pappas (D, incumbent)</span></li>
-            <li><span>Board of Review</span><span>2nd District: Elizabeth "Liz" Nicholson (D). Other districts: check your sample ballot.</span></li>
-            <li><span>Water Reclamation District, 2-year term</span><span>Cameron "Cam" Davis (D)</span></li>
-          </ul>
-        </div>
+        <h3 class="sub">Only a Democrat is running</h3>
+        <p class="sec-intro">No Republican or other candidate is running in these races, so the Democrat is the only name on the ballot. Mark it to fill in the race, or leave it blank. A blank doesn't affect the rest of your ballot.</p>
+        <div class="contests" id="cook-dem"></div>
+        <p class="note">Board of Review: only the 1st or 2nd District is on your ballot, depending on where you live. George Cardenas (D, incumbent) won the 1st District Democratic primary and no Republican ran in it. If you're in the 1st District, check your sample ballot.</p>
         <p class="note">No Republican is on the ballot for Board President. Eric Wallace ran as a write-in in the March primary, but he does not appear on the Cook County Clerk's write-in list for November. Check your sample ballot.</p>
         <p class="callout"><b>County Board: all 17 commissioner seats are up.</b> Republicans are running in several districts. Your sample ballot shows your district and who is running in it.</p>
         <p class="callout"><b>You can skip a race.</b> Leaving one blank does not affect the rest of your ballot. Every vote you cast for governor, Senate and Congress still counts in full.</p>
@@ -407,7 +395,7 @@ footer b { color: var(--ink); }
 <footer>
   <div class="wrap">
     <p><b>Republican Unified Voters</b> is a volunteer voter guide. It is not affiliated with the Illinois Republican Party, the Republican National Committee, or any candidate or campaign.</p>
-    <p>Candidates are as listed for the November 3 ballot, checked October 1, 2026. Where no Republican is running, other non-Democrat candidates are shown with their own party label. Ballots can change. Your official sample ballot is the final word.</p>
+    <p>Candidates are as listed for the November 3 ballot, checked October 1, 2026. Where no Republican is running, other non-Democrat candidates are shown with their own party label. Where only a Democrat is on the ballot, that name is shown too. Ballots can change. Your official sample ballot is the final word.</p>
     <div class="sources">
       <a href="https://www.elections.il.gov" target="_blank" rel="noopener">Illinois State Board of Elections</a>
       <a href="https://chicagoelections.gov" target="_blank" rel="noopener">Chicago Board of Elections</a>
@@ -508,6 +496,25 @@ footer b { color: var(--ink); }
       mine: [{ key: "assessor", name: "Nico Tsatsoulis", bio: "Also the Libertarian nominee for assessor in 2022.", party: "Libertarian" }],
       them: [{ name: "Pat Hynes", bio: "Lyons Township assessor. Beat incumbent Fritz Kaegi in the primary.", party: "Democratic" }],
       seat: "open", tag: NO_REP }
+  ];
+  var ONLY_NAME = "Only name on the ballot";
+  var COOK_DEM = [
+    { id: "clerk", short: "Cook County Clerk", office: "Cook County Clerk",
+      does: "Runs elections in suburban Cook and keeps the county's property, birth, marriage and death records.",
+      mine: [{ key: "clerk", name: "Monica Gordon", bio: "Incumbent.", party: "Democratic" }], them: [],
+      seat: "dem", tag: ONLY_NAME },
+    { id: "ctreas", short: "Cook County Treasurer", office: "Cook County Treasurer",
+      does: "Collects property taxes and sends the money to schools, cities and other local governments.",
+      mine: [{ key: "ctreas", name: "Maria Pappas", bio: "Incumbent.", party: "Democratic" }], them: [],
+      seat: "dem", tag: ONLY_NAME },
+    { id: "bor2", short: "Board of Review, 2nd District", office: "Board of Review, 2nd District",
+      does: "Hears appeals from property owners who think their assessment is too high. Only on your ballot if you live in the 2nd District.",
+      mine: [{ key: "bor2", name: "Elizabeth \"Liz\" Nicholson", bio: "", party: "Democratic" }], them: [],
+      seat: "dem", tag: ONLY_NAME },
+    { id: "mwrd2", short: "Water Reclamation District, 2-year term", office: "Water Reclamation District, 2-year term",
+      does: "Fills the rest of an unexpired term on the same board.",
+      mine: [{ key: "mwrd2", name: "Cameron \"Cam\" Davis", bio: "", party: "Democratic" }], them: [],
+      seat: "dem", tag: ONLY_NAME }
   ];
   var ABBR = { Republican: "R", Libertarian: "L", Democratic: "D" };
 
@@ -664,6 +671,8 @@ footer b { color: var(--ink); }
   var cookRep = document.getElementById("cook-rep"), cookAlt = document.getElementById("cook-alt");
   COOK_REP.forEach(function (r) { cookRep.appendChild(contest(r)); });
   COOK_ALT.forEach(function (r) { cookAlt.appendChild(contest(r)); });
+  var cookDem = document.getElementById("cook-dem");
+  COOK_DEM.forEach(function (r) { cookDem.appendChild(contest(r)); });
 
   // House picker
   var sel = document.getElementById("district");
@@ -743,7 +752,7 @@ footer b { color: var(--ink); }
     if (h) out.push({ o: "U.S. House · District " + h.n, p: state.picks.house ? h.r : "", t: h.r + " (R)", on: !!state.picks.house });
     else out.push({ o: "U.S. House", p: "", on: false, hint: "Choose your district" });
     // Cook County races only show once something in them is marked.
-    COOK_REP.concat(COOK_ALT).forEach(function (r) {
+    COOK_REP.concat(COOK_ALT, COOK_DEM).forEach(function (r) {
       var marked = r.mine.filter(function (c) { return state.picks[c.key]; });
       if (!marked.length) return;
       out.push({
